@@ -5,7 +5,6 @@ class Store < ActiveRecord::Base
   has_many :employees
 
   def valid_apparel
-    puts "#{mens_apparel}"
     unless ( mens_apparel || womens_apparel )
       errors.add(name, "needs to sell some clothing!")
     end

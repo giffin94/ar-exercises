@@ -2,6 +2,10 @@ class Employee < ActiveRecord::Base
   validates :first_name, :last_name, :store_id, presence: true
   validates :hourly_rate, numericality: { only_integer: true, greater_than: 39, less_than: 200 }
   belongs_to :store
+
+  before_create do
+    self.password = (0...8).map { (65 + rand(26)).chr }.join
+  end
   # Employees must always have a first name present
   # Employees must always have a last name present
   # Employees have a hourly_rate that is a number (integer) between 40 and 200

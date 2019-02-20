@@ -11,5 +11,5 @@ puts "----------"
 
 # Your code goes here ...
 puts "Please enter a store name!"
-@store3 = Store.create(name: "#{gets.chomp}")
+@store3 = Store.create(name: "#{gets.chomp}", annual_revenue: 1, mens_apparel: true)
 @store3.errors.full_messages.each { |msg| puts "#{msg}" }
