@@ -1,8 +1,19 @@
 class Store < ActiveRecord::Base
+  has_many :employees
+  
   validates :name, presence: true, length: { minimum: 3 }
   validate :valid_apparel
   validates :annual_revenue, numericality: { only_integer: true, greater_than_or_equal_to: 0 } 
-  has_many :employees
+
+  before_destroy :count_employees
+
+  private 
+    def count_employees
+      if employees.any?
+        errors.add(name, "still has employees!")
+        throw :abort
+      end 
+    end 
 
   def valid_apparel
     unless ( mens_apparel || womens_apparel )
