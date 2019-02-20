@@ -7,3 +7,5 @@ require_relative './exercise_5'
 require_relative './exercise_6'
 require_relative './exercise_7'
 
+new_employee = @store2.employees.create(first_name: 'Aedan', last_name: 'Giffin', hourly_rate: 199)
+puts "#{new_employee.password}"
